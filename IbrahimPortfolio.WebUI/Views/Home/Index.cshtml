@@ -1,0 +1,136 @@
+@model IbrahimPortfolio.Dto.MessageDtos.CreateMessageDto
+@{
+    ViewData["Title"] = "Ana Sayfa";
+}
+
+<div class="container-fluid p-0">
+
+    <!-- About -->
+    @await Component.InvokeAsync("About")
+
+    <hr class="m-0" />
+
+    
+
+
+    <!-- Experience -->
+    @await Component.InvokeAsync("Experience")
+
+    <hr class="m-0" />
+
+
+    <!-- Education -->
+    @await Component.InvokeAsync("Education")
+
+    <hr class="m-0" />
+
+
+    <!-- Skills -->
+    @await Component.InvokeAsync("Skill")
+
+    <hr class="m-0" />
+
+
+    <!-- Projects -->
+    @await Component.InvokeAsync("Project")
+
+    <hr class="m-0" />
+
+
+    <!-- Certificates -->
+    @await Component.InvokeAsync("Certificate")
+
+    <hr class="m-0" />
+
+
+    <!-- Contact -->
+    <section class="resume-section" id="contact">
+
+        <div class="resume-section-content">
+
+            <h2 class="mb-5">İletişim</h2>
+
+            @if (TempData["MessageSuccess"] != null)
+            {
+                <div class="alert alert-success">
+                    @TempData["MessageSuccess"]
+                </div>
+            }
+
+            @if (TempData["MessageError"] != null)
+            {
+                <div class="alert alert-danger">
+                    @TempData["MessageError"]
+                </div>
+            }
+
+            <form asp-controller="Home"
+                  asp-action="SendMessage"
+                  method="post"><div asp-validation-summary="All" class="text-danger mb-3"></div>
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+                        Ad Soyad
+                    </label>
+
+                    <input type="text"
+                           asp-for="Name"
+                           class="form-control"
+                           required /><span asp-validation-for="Name" class="text-danger"></span>
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+                        E-posta
+                    </label>
+
+                    <input type="email"
+                           asp-for="Email"
+                           class="form-control"
+                           required /><span asp-validation-for="Email" class="text-danger"></span>
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+                        Konu
+                    </label>
+
+                    <input type="text"
+                           asp-for="Subject"
+                           class="form-control"
+                           required /><span asp-validation-for="Subject" class="text-danger"></span>
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+                        Mesaj
+                    </label>
+
+                    <textarea asp-for="MessageContent"
+                              class="form-control"
+                              rows="5"
+                              required></textarea><span asp-validation-for="MessageContent" class="text-danger"></span>
+
+                </div>
+
+                <button type="submit"
+                        class="btn btn-primary">
+                    Gönder
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+</div>
+@section Scripts { <partial name="_ValidationScriptsPartial" /> }
+

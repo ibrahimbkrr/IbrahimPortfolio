@@ -1,0 +1,130 @@
+@using IbrahimPortfolio.Dto.SocialMediaDtos
+@model CreateSocialMediaDto
+
+@{
+    ViewData["Title"] = "Yeni Sosyal Medya";
+}
+
+<h1 class="mt-4">Yeni Sosyal Medya</h1>
+
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item">
+        <a asp-area="Admin"
+           asp-controller="SocialMedia"
+           asp-action="Index">
+            Sosyal Medya
+        </a>
+    </li>
+    <li class="breadcrumb-item active">Yeni Hesap</li>
+</ol>
+
+<div class="card mb-4">
+
+    <div class="card-header">
+        <i class="fas fa-plus me-1"></i>
+        Sosyal Medya Hesabı Ekle
+    </div>
+
+    <div class="card-body">
+
+        <form asp-area="Admin"
+              asp-controller="SocialMedia"
+              asp-action="Create"
+              method="post"><div asp-validation-summary="All" class="text-danger mb-3"></div>
+
+            <div class="row">
+
+                <div class="col-md-6 mb-3">
+
+                    <label asp-for="Name" class="form-label">
+                        Platform
+                    </label>
+
+                    <input asp-for="Name"
+                           class="form-control"
+                           placeholder="Örn: GitHub" />
+<span asp-validation-for="Name" class="text-danger"></span>
+
+                </div>
+
+                <div class="col-md-6 mb-3">
+
+                    <label asp-for="DisplayOrder" class="form-label">
+                        Sıra
+                    </label>
+
+                    <input asp-for="DisplayOrder"
+                           type="number"
+                           class="form-control" />
+<span asp-validation-for="DisplayOrder" class="text-danger"></span>
+
+                </div>
+
+            </div>
+
+            <div class="mb-3">
+
+                <label asp-for="Url" class="form-label">
+                    URL
+                </label>
+
+                <input asp-for="Url"
+                       class="form-control"
+                       placeholder="https://..." />
+<span asp-validation-for="Url" class="text-danger"></span>
+
+            </div>
+
+            <div class="mb-3">
+
+                <label asp-for="Icon" class="form-label">
+                    Font Awesome Icon
+                </label>
+
+                <input asp-for="Icon"
+                       class="form-control"
+                       placeholder="fab fa-github" />
+<span asp-validation-for="Icon" class="text-danger"></span>
+
+                <div class="form-text">
+                    Örn: fab fa-github, fab fa-linkedin-in
+                </div>
+
+            </div>
+
+            <div class="form-check mb-4">
+
+                <input asp-for="IsActive"
+                       class="form-check-input" />
+<span asp-validation-for="IsActive" class="text-danger"></span>
+
+                <label asp-for="IsActive"
+                       class="form-check-label">
+                    Aktif
+                </label>
+
+            </div>
+
+            <div class="d-flex justify-content-between">
+
+                <a asp-action="Index"
+                   class="btn btn-secondary">
+                    Geri Dön
+                </a>
+
+                <button type="submit"
+                        class="btn btn-primary">
+                    Kaydet
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+

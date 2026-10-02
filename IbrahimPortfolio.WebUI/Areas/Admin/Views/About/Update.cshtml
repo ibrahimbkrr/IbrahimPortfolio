@@ -1,0 +1,224 @@
+@using IbrahimPortfolio.Dto.AboutDtos
+@model UpdateAboutDto
+
+@{
+    ViewData["Title"] = "Hakkımda Güncelle";
+}
+
+<h1 class="mt-4">Hakkımda Güncelle</h1>
+
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item">
+        <a asp-area="Admin"
+           asp-controller="About"
+           asp-action="Index">
+            Hakkımda
+        </a>
+    </li>
+
+    <li class="breadcrumb-item active">
+        Güncelle
+    </li>
+</ol>
+
+<div class="card mb-4">
+
+    <div class="card-header">
+        <i class="fas fa-user-pen me-1"></i>
+        Hakkımda Bilgilerini Düzenle
+    </div>
+
+    <div class="card-body">
+
+        <form asp-area="Admin"
+              asp-controller="About"
+              asp-action="Update"
+              method="post">
+
+            <input type="hidden" asp-for="Id" />
+
+            <div asp-validation-summary="All"
+                 class="alert alert-danger"
+                 role="alert">
+            </div>
+
+
+            <div class="row">
+
+                <div class="col-md-6 mb-3">
+
+                    <label asp-for="FirstName"
+                           class="form-label">
+                        Ad
+                    </label>
+
+                    <input asp-for="FirstName"
+                           class="form-control" />
+<span asp-validation-for="FirstName" class="text-danger"></span>
+
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+
+                    <label asp-for="LastName"
+                           class="form-label">
+                        Soyad
+                    </label>
+
+                    <input asp-for="LastName"
+                           class="form-control" />
+<span asp-validation-for="LastName" class="text-danger"></span>
+
+                </div>
+
+            </div>
+
+
+            <div class="row">
+
+                <div class="col-md-6 mb-3">
+
+                    <label asp-for="Title"
+                           class="form-label">
+                        Unvan
+                    </label>
+
+                    <input asp-for="Title"
+                           class="form-control" />
+<span asp-validation-for="Title" class="text-danger"></span>
+
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+
+                    <label asp-for="Email"
+                           class="form-label">
+                        E-posta
+                    </label>
+
+                    <input asp-for="Email"
+                           class="form-control"
+                           type="email" />
+<span asp-validation-for="Email" class="text-danger"></span>
+
+                </div>
+
+            </div>
+
+
+            <div class="row">
+
+                <div class="col-md-6 mb-3">
+
+                    <label asp-for="PhoneNumber"
+                           class="form-label">
+                        Telefon
+                    </label>
+
+                    <input asp-for="PhoneNumber"
+                           class="form-control" />
+<span asp-validation-for="PhoneNumber" class="text-danger"></span>
+
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+
+                    <label asp-for="Address"
+                           class="form-label">
+                        Adres
+                    </label>
+
+                    <input asp-for="Address"
+                           class="form-control" />
+<span asp-validation-for="Address" class="text-danger"></span>
+
+                </div>
+
+            </div>
+
+
+            <div class="mb-3">
+
+                <label asp-for="Description"
+                       class="form-label">
+                    Açıklama
+                </label>
+
+                <textarea asp-for="Description"
+                          class="form-control"
+                          rows="6"></textarea>
+<span asp-validation-for="Description" class="text-danger"></span>
+
+            </div>
+
+
+            <div class="row">
+
+                <div class="col-md-6 mb-3">
+
+                    <label asp-for="ImageUrl"
+                           class="form-label">
+                        Profil Fotoğrafı URL
+                    </label>
+
+                    <input asp-for="ImageUrl"
+                           class="form-control" />
+<span asp-validation-for="ImageUrl" class="text-danger"></span>
+
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+
+                    <label asp-for="CvUrl"
+                           class="form-label">
+                        CV URL
+                    </label>
+
+                    <input asp-for="CvUrl"
+                           class="form-control" />
+<span asp-validation-for="CvUrl" class="text-danger"></span>
+
+                </div>
+
+            </div>
+
+
+            <hr />
+
+
+            <div class="d-flex justify-content-between">
+
+                <a asp-area="Admin"
+                   asp-controller="About"
+                   asp-action="Index"
+                   class="btn btn-secondary">
+
+                    <i class="fas fa-arrow-left me-1"></i>
+                    Geri Dön
+
+                </a>
+
+
+                <button type="submit"
+                        class="btn btn-primary">
+
+                    <i class="fas fa-save me-1"></i>
+                    Güncelle
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+

@@ -1,0 +1,130 @@
+@using IbrahimPortfolio.Dto.SocialMediaDtos
+@model List<ResultSocialMediaDto>
+
+@{
+    ViewData["Title"] = "Sosyal Medya";
+}
+
+<h1 class="mt-4">Sosyal Medya</h1>
+
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item">Admin</li>
+    <li class="breadcrumb-item active">Sosyal Medya</li>
+</ol>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+<div class="card mb-4">
+
+    <div class="card-header d-flex justify-content-between align-items-center">
+
+        <span>
+            <i class="fas fa-share-alt me-1"></i>
+            Sosyal Medya Hesapları
+        </span>
+
+        <a asp-area="Admin"
+           asp-controller="SocialMedia"
+           asp-action="Create"
+           class="btn btn-primary btn-sm">
+
+            <i class="fas fa-plus me-1"></i>
+            Yeni Hesap
+        </a>
+
+    </div>
+
+    <div class="card-body">
+
+        <div class="table-responsive">
+
+            <table class="table table-bordered table-hover align-middle">
+
+                <thead class="table-light">
+                    <tr>
+                        <th>Platform</th>
+                        <th>URL</th>
+                        <th>Icon</th>
+                        <th>Sıra</th>
+                        <th>Durum</th>
+                        <th style="width:180px;">İşlem</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+@if (Model.Count == 0) { <tr><td colspan="6" class="text-muted text-center">Henüz kayıt bulunmuyor.</td></tr> }
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+
+                            <td>@item.Name</td>
+
+                            <td>
+                                <a href="@(SafeUrlAttribute.IsSafe(item.Url) ? item.Url : null)"
+                                   target="_blank" rel="noopener noreferrer">
+                                    @item.Url
+                                </a>
+                            </td>
+
+                            <td>
+                                <i class="@item.Icon"></i>
+                                <span class="ms-2">@item.Icon</span>
+                            </td>
+
+                            <td>@item.DisplayOrder</td>
+
+                            <td>
+                                @if (item.IsActive)
+                                {
+                                    <span class="badge bg-success">
+                                        Aktif
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-secondary">
+                                        Pasif
+                                    </span>
+                                }
+                            </td>
+
+                            <td>
+
+                                <a asp-area="Admin"
+                                   asp-controller="SocialMedia"
+                                   asp-action="Update"
+                                   asp-route-id="@item.Id"
+                                   class="btn btn-warning btn-sm">
+
+                                    <i class="fas fa-pen"></i>
+                                </a>
+
+                                <form method="post" class="d-inline" asp-area="Admin"
+                                   asp-controller="SocialMedia"
+                                   asp-action="Delete"
+                                   asp-route-id="@item.Id"
+                                   onsubmit="return confirm('Bu hesabı silmek istediğinize emin misiniz?')"><button type="submit" class="btn btn-danger btn-sm">
+
+                                    <i class="fas fa-trash"></i>
+                                </button></form>
+
+                            </td>
+
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>

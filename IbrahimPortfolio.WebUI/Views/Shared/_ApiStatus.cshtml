@@ -1,0 +1,5 @@
+@inject IbrahimPortfolio.WebUI.Services.ApiRequestState ApiRequests
+@if (ApiRequests.HasErrors) {
+    <div class="alert alert-warning m-3" role="alert">Bazı bilgiler API üzerinden alınamadı veya işlem tamamlanamadı. Lütfen daha sonra tekrar deneyin.</div>
+}
+@if (TempData["ErrorMessage"] is string error) { <div class="alert alert-danger m-3" role="alert">@error</div> }

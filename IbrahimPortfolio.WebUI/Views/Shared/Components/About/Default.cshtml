@@ -1,0 +1,58 @@
+@using IbrahimPortfolio.WebUI.Models
+@model AboutViewModel
+
+@if (Model.About != null)
+{
+    <section class="resume-section" id="about">
+
+        <div class="resume-section-content">
+
+            <h1 class="mb-0">
+                @Model.About.FirstName
+
+                <span class="text-primary">
+                    @Model.About.LastName
+                </span>
+            </h1>
+
+            <div class="subheading mb-5">
+
+                @if (!string.IsNullOrWhiteSpace(Model.About.Address)) { <span>@Model.About.Address · </span> }
+                @if (!string.IsNullOrWhiteSpace(Model.About.PhoneNumber)) { <span>@Model.About.PhoneNumber · </span> }
+
+                <a href="mailto:@Model.About.Email">
+                    @Model.About.Email
+                </a>
+
+            </div>
+
+            <h3 class="mb-4">
+                @Model.About.Title
+            </h3>
+
+            <p class="lead mb-5">
+                @Model.About.Description
+            </p>
+
+            @if (SafeUrlAttribute.IsSafe(Model.About.CvUrl, true)) { <a href="@Model.About.CvUrl" class="btn btn-primary mb-4" target="_blank" rel="noopener noreferrer">CV Görüntüle</a> }
+            <div class="social-icons">
+
+                @foreach (var item in Model.SocialMedias.Where(x => SafeUrlAttribute.IsSafe(x.Url)))
+                {
+                    <a class="social-icon"
+                       href="@item.Url"
+                       target="_blank" rel="noopener noreferrer"
+                       title="@item.Name">
+
+                        <i class="@item.Icon"></i>
+
+                    </a>
+                }
+
+            </div>
+
+        </div>
+
+    </section>
+}
+else { <section class="resume-section" id="about"><div class="resume-section-content"><h1>Portfolio</h1><p>Hakkımda bilgisi henüz eklenmedi.</p></div></section> }

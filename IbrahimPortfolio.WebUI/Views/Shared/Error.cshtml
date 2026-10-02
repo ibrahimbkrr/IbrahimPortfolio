@@ -1,0 +1,7 @@
+@model ErrorViewModel
+@{ Layout = null; }
+<!DOCTYPE html>
+<html lang="tr"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>İşlem tamamlanamadı</title><link href="~/startbootstrap-sb-admin-gh-pages/css/styles.css" rel="stylesheet" /></head>
+<body class="bg-light"><main class="container py-5"><h1>İşlem tamamlanamadı</h1><p>Lütfen daha sonra tekrar deneyin.</p>
+@if (Model.ShowRequestId) { <p>İstek numarası: <code>@Model.RequestId</code></p> }
+<a href="/" class="btn btn-primary">Ana sayfa</a></main></body></html>

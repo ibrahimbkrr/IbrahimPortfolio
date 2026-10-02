@@ -1,0 +1,164 @@
+@using IbrahimPortfolio.Dto.CertificateDtos
+@model UpdateCertificateDto
+
+@{
+    ViewData["Title"] = "Sertifika Güncelle";
+}
+
+<h1 class="mt-4">Sertifika Güncelle</h1>
+
+<ol class="breadcrumb mb-4">
+
+    <li class="breadcrumb-item">
+        <a asp-area="Admin"
+           asp-controller="Certificate"
+           asp-action="Index">
+            Sertifikalar
+        </a>
+    </li>
+
+    <li class="breadcrumb-item active">
+        Güncelle
+    </li>
+
+</ol>
+
+<div class="card mb-4">
+
+    <div class="card-header">
+        <i class="fas fa-pen me-1"></i>
+        Sertifika Bilgilerini Düzenle
+    </div>
+
+    <div class="card-body">
+
+        <form asp-area="Admin"
+              asp-controller="Certificate"
+              asp-action="Update"
+              method="post">
+
+            <input type="hidden" asp-for="Id" />
+
+            <div asp-validation-summary="All"
+                 class="alert alert-danger">
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-6 mb-3">
+
+                    <label asp-for="Name"
+                           class="form-label">
+                        Sertifika Adı
+                    </label>
+
+                    <input asp-for="Name"
+                           class="form-control" />
+<span asp-validation-for="Name" class="text-danger"></span>
+
+                </div>
+
+                <div class="col-md-6 mb-3">
+
+                    <label asp-for="Issuer"
+                           class="form-label">
+                        Veren Kurum
+                    </label>
+
+                    <input asp-for="Issuer"
+                           class="form-control" />
+<span asp-validation-for="Issuer" class="text-danger"></span>
+
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-6 mb-3">
+
+                    <label asp-for="IssueDate"
+                           class="form-label">
+                        Veriliş Tarihi
+                    </label>
+
+                    <input asp-for="IssueDate"
+                           type="date"
+                           class="form-control" />
+<span asp-validation-for="IssueDate" class="text-danger"></span>
+
+                </div>
+
+                <div class="col-md-6 mb-3">
+
+                    <label asp-for="ExpirationDate"
+                           class="form-label">
+                        Son Geçerlilik Tarihi
+                    </label>
+
+                    <input asp-for="ExpirationDate"
+                           type="date"
+                           class="form-control" />
+<span asp-validation-for="ExpirationDate" class="text-danger"></span>
+
+                </div>
+
+            </div>
+
+            <div class="mb-3">
+
+                <label asp-for="CredentialId"
+                       class="form-label">
+                    Belge / Credential ID
+                </label>
+
+                <input asp-for="CredentialId"
+                       class="form-control" />
+<span asp-validation-for="CredentialId" class="text-danger"></span>
+
+            </div>
+
+            <div class="mb-3">
+
+                <label asp-for="CredentialUrl"
+                       class="form-label">
+                    Sertifika URL
+                </label>
+
+                <input asp-for="CredentialUrl"
+                       class="form-control" />
+<span asp-validation-for="CredentialUrl" class="text-danger"></span>
+
+            </div>
+
+            <hr />
+
+            <div class="d-flex justify-content-between">
+
+                <a asp-area="Admin"
+                   asp-controller="Certificate"
+                   asp-action="Index"
+                   class="btn btn-secondary">
+
+                    <i class="fas fa-arrow-left me-1"></i>
+                    Geri Dön
+                </a>
+
+                <button type="submit"
+                        class="btn btn-primary">
+
+                    <i class="fas fa-save me-1"></i>
+                    Güncelle
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+

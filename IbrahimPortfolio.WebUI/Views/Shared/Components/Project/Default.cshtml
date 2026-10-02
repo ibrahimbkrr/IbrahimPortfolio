@@ -1,0 +1,13 @@
+@model List<IbrahimPortfolio.Dto.ProjectDtos.ResultProjectDto>
+<section class="resume-section" id="projects"><div class="resume-section-content">
+<h2 class="mb-5">Projeler</h2>
+@if (Model.Count == 0) { <p class="text-muted">Henüz proje eklenmedi.</p> }
+@foreach (var item in Model) {
+<div class="mb-5">
+<h3 class="mb-0">@item.Name</h3>
+@if (SafeUrlAttribute.IsSafe(item.ImageUrl, true)) { <img src="@item.ImageUrl" class="img-fluid rounded my-3" style="max-height:280px" alt="@item.Name" loading="lazy" /> }
+<p>@item.Description</p><p><strong>Teknolojiler:</strong> @item.Technologies</p>
+@if (SafeUrlAttribute.IsSafe(item.GithubUrl)) { <a href="@item.GithubUrl" target="_blank" rel="noopener noreferrer" class="btn btn-outline-dark me-2">GitHub</a> }
+@if (SafeUrlAttribute.IsSafe(item.LiveUrl)) { <a href="@item.LiveUrl" target="_blank" rel="noopener noreferrer" class="btn btn-outline-primary">Canlı Proje</a> }
+</div> }
+</div></section>

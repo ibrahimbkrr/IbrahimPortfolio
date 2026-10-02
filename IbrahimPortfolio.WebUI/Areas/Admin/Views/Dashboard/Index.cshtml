@@ -1,0 +1,275 @@
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+
+<h1 class="mt-4">
+    Dashboard
+</h1>
+
+
+<ol class="breadcrumb mb-4">
+
+    <li class="breadcrumb-item active">
+        Dashboard
+    </li>
+
+</ol>
+
+
+<div class="row">
+
+
+    <!-- Projects -->
+
+    <div class="col-xl-3 col-md-6">
+
+        <div class="card bg-primary text-white mb-4">
+
+            <div class="card-body">
+
+                <h4>
+                    @ViewBag.ProjectCount
+                </h4>
+
+                Proje
+
+            </div>
+
+
+            <div class="card-footer d-flex align-items-center justify-content-between">
+
+                <a class="small text-white"
+                   asp-area="Admin"
+                   asp-controller="Project"
+                   asp-action="Index">
+
+                    Detay
+
+                </a>
+
+                <i class="fas fa-angle-right"></i>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- Skills -->
+
+    <div class="col-xl-3 col-md-6">
+
+        <div class="card bg-success text-white mb-4">
+
+            <div class="card-body">
+
+                <h4>
+                    @ViewBag.SkillCount
+                </h4>
+
+                Yetenek
+
+            </div>
+
+
+            <div class="card-footer d-flex align-items-center justify-content-between">
+
+                <a class="small text-white"
+                   asp-area="Admin"
+                   asp-controller="Skill"
+                   asp-action="Index">
+
+                    Detay
+
+                </a>
+
+                <i class="fas fa-angle-right"></i>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- Certificates -->
+
+    <div class="col-xl-3 col-md-6">
+
+        <div class="card bg-warning text-dark mb-4">
+
+            <div class="card-body">
+
+                <h4>
+                    @ViewBag.CertificateCount
+                </h4>
+
+                Sertifika
+
+            </div>
+
+
+            <div class="card-footer d-flex align-items-center justify-content-between">
+
+                <a class="small text-dark"
+                   asp-area="Admin"
+                   asp-controller="Certificate"
+                   asp-action="Index">
+
+                    Detay
+
+                </a>
+
+                <i class="fas fa-angle-right"></i>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- Messages -->
+
+    <div class="col-xl-3 col-md-6">
+
+        <div class="card bg-danger text-white mb-4">
+
+            <div class="card-body">
+
+                <h4>
+                    @ViewBag.MessageCount
+                </h4>
+
+                Okunmamış Mesaj
+
+            </div>
+
+
+            <div class="card-footer d-flex align-items-center justify-content-between">
+
+                <a class="small text-white"
+                   asp-area="Admin"
+                   asp-controller="Message"
+                   asp-action="Index">
+
+                    Mesajlar
+
+                </a>
+
+                <i class="fas fa-angle-right"></i>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+
+<div class="card mb-4">
+
+
+    <div class="card-header">
+
+        <i class="fas fa-envelope me-1"></i>
+
+        Son Gelen Mesajlar
+
+    </div>
+
+
+
+    <div class="card-body">
+
+
+        <div class="table-responsive">
+
+
+            <table class="table table-bordered">
+
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Ad
+                        </th>
+
+                        <th>
+                            E-Mail
+                        </th>
+
+                        <th>
+                            Konu
+                        </th>
+
+                        <th>
+                            Tarih
+                        </th><th>İşlem</th>
+
+
+                    </tr>
+
+                </thead>
+
+
+
+                <tbody>@if (ViewBag.LastMessages.Count == 0) { <tr><td colspan="5" class="text-muted">Henüz mesaj bulunmuyor.</td></tr> }
+
+
+                    @foreach (IbrahimPortfolio.Dto.MessageDtos.ResultMessageDto item in ViewBag.LastMessages)
+                    {
+
+                        <tr class="@(!item.IsRead ? "table-warning" : "")">
+
+
+                            <td>
+                                @item.Name
+                            </td>
+
+
+                            <td>
+                                @item.Email
+                            </td>
+
+
+                            <td>
+                                @item.Subject
+                            </td>
+
+
+                            <td>
+                                @item.CreatedAt.ToString("dd.MM.yyyy HH:mm")
+                            </td><td><form method="post" asp-area="Admin" asp-controller="Message" asp-action="Open" asp-route-id="@item.Id"><button type="submit" class="btn btn-primary btn-sm">Görüntüle</button></form></td>
+
+
+                        </tr>
+
+                    }
+
+
+                </tbody>
+
+
+            </table>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+

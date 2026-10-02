@@ -1,0 +1,150 @@
+@using IbrahimPortfolio.Dto.ExperienceDtos
+@model UpdateExperienceDto
+
+@{
+    ViewData["Title"] = "Deneyim Güncelle";
+}
+
+<h1 class="mt-4">Deneyim Güncelle</h1>
+
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item">
+        <a asp-area="Admin"
+           asp-controller="Experience"
+           asp-action="Index">
+            Deneyimler
+        </a>
+    </li>
+    <li class="breadcrumb-item active">Güncelle</li>
+</ol>
+
+<div class="card mb-4">
+
+    <div class="card-header">
+        <i class="fas fa-pen me-1"></i>
+        Deneyim Bilgilerini Düzenle
+    </div>
+
+    <div class="card-body">
+
+        <form asp-area="Admin"
+              asp-controller="Experience"
+              asp-action="Update"
+              method="post">
+
+            <input type="hidden" asp-for="Id" />
+
+            <div asp-validation-summary="All"
+                 class="alert alert-danger">
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-6 mb-3">
+                    <label asp-for="CompanyName"
+                           class="form-label">
+                        Şirket Adı
+                    </label>
+
+                    <input asp-for="CompanyName"
+                           class="form-control" />
+<span asp-validation-for="CompanyName" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label asp-for="Position"
+                           class="form-label">
+                        Pozisyon
+                    </label>
+
+                    <input asp-for="Position"
+                           class="form-control" />
+<span asp-validation-for="Position" class="text-danger"></span>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-6 mb-3">
+                    <label asp-for="StartDate"
+                           class="form-label">
+                        Başlangıç Tarihi
+                    </label>
+
+                    <input asp-for="StartDate"
+                           type="date"
+                           class="form-control" />
+<span asp-validation-for="StartDate" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label asp-for="EndDate"
+                           class="form-label">
+                        Bitiş Tarihi
+                    </label>
+
+                    <input asp-for="EndDate"
+                           type="date"
+                           class="form-control" />
+<span asp-validation-for="EndDate" class="text-danger"></span>
+                </div>
+
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Description"
+                       class="form-label">
+                    Açıklama
+                </label>
+
+                <textarea asp-for="Description"
+                          class="form-control"
+                          rows="5"></textarea>
+<span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <div class="form-check mb-4">
+
+                <input asp-for="IsCurrent"
+                       class="form-check-input" />
+<span asp-validation-for="IsCurrent" class="text-danger"></span>
+
+                <label asp-for="IsCurrent"
+                       class="form-check-label">
+                    Halen burada çalışıyorum
+                </label>
+
+            </div>
+
+            <hr />
+
+            <div class="d-flex justify-content-between">
+
+                <a asp-area="Admin"
+                   asp-controller="Experience"
+                   asp-action="Index"
+                   class="btn btn-secondary">
+
+                    <i class="fas fa-arrow-left me-1"></i>
+                    Geri Dön
+                </a>
+
+                <button type="submit"
+                        class="btn btn-primary">
+
+                    <i class="fas fa-save me-1"></i>
+                    Güncelle
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+

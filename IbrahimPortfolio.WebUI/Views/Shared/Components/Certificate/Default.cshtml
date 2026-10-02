@@ -1,0 +1,13 @@
+@model List<IbrahimPortfolio.Dto.CertificateDtos.ResultCertificateDto>
+<section class="resume-section" id="certificates"><div class="resume-section-content">
+<h2 class="mb-5">Sertifikalar</h2>
+@if (Model.Count == 0) { <p class="text-muted">Henüz sertifika eklenmedi.</p> }
+<ul class="fa-ul mb-0">
+@foreach (var item in Model.OrderByDescending(x => x.IssueDate)) {
+<li class="mb-4"><span class="fa-li"><i class="fas fa-certificate text-warning"></i></span>
+<h3 class="h5 mb-1">@item.Name</h3><div>@item.Issuer</div>
+<div class="text-muted">@item.IssueDate.ToString("dd.MM.yyyy") @if (item.ExpirationDate.HasValue) { <span> - @item.ExpirationDate.Value.ToString("dd.MM.yyyy")</span> }</div>
+@if (!string.IsNullOrWhiteSpace(item.CredentialId)) { <div>Belge No: @item.CredentialId</div> }
+@if (SafeUrlAttribute.IsSafe(item.CredentialUrl)) { <a href="@item.CredentialUrl" target="_blank" rel="noopener noreferrer">Sertifikayı Görüntüle</a> }
+</li> }
+</ul></div></section>

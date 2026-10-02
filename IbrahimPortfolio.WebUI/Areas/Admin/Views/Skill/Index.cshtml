@@ -1,0 +1,136 @@
+@using IbrahimPortfolio.Dto.SkillDtos
+@model List<ResultSkillDto>
+
+@{
+    ViewData["Title"] = "Yetenekler";
+}
+
+<h1 class="mt-4">Yetenekler</h1>
+
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item">Admin</li>
+    <li class="breadcrumb-item active">Yetenekler</li>
+</ol>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show"
+         role="alert">
+
+        @TempData["SuccessMessage"]
+
+        <button type="button"
+                class="btn-close"
+                data-bs-dismiss="alert">
+        </button>
+
+    </div>
+}
+
+<div class="card mb-4">
+
+    <div class="card-header d-flex justify-content-between align-items-center">
+
+        <span>
+            <i class="fas fa-code me-1"></i>
+            Yetenek Listesi
+        </span>
+
+        <a asp-area="Admin"
+           asp-controller="Skill"
+           asp-action="Create"
+           class="btn btn-primary btn-sm">
+
+            <i class="fas fa-plus me-1"></i>
+            Yeni Yetenek
+
+        </a>
+
+    </div>
+
+    <div class="card-body">
+
+        <div class="table-responsive">
+
+            <table class="table table-bordered table-hover align-middle">
+
+                <thead class="table-light">
+                    <tr>
+                        <th>Yetenek</th>
+                        <th>Seviye</th>
+                        <th style="width: 250px;">Görsel</th>
+                        <th style="width: 180px;">İşlem</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+@if (Model.Count == 0) { <tr><td colspan="4" class="text-muted text-center">Henüz kayıt bulunmuyor.</td></tr> }
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+
+                            <td>
+                                <strong>@item.Name</strong>
+                            </td>
+
+                            <td>
+                                %@item.Level
+                            </td>
+
+                            <td>
+
+                                <div class="progress"
+                                     style="height: 20px;">
+
+                                    <div class="progress-bar"
+                                         role="progressbar"
+                                         style="width: @item.Level%;"
+                                         aria-valuenow="@item.Level"
+                                         aria-valuemin="0"
+                                         aria-valuemax="100">
+
+                                        %@item.Level
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+                            <td>
+
+                                <a asp-area="Admin"
+                                   asp-controller="Skill"
+                                   asp-action="Update"
+                                   asp-route-id="@item.Id"
+                                   class="btn btn-warning btn-sm">
+
+                                    <i class="fas fa-pen"></i>
+
+                                </a>
+
+                                <form method="post" class="d-inline" asp-area="Admin"
+                                   asp-controller="Skill"
+                                   asp-action="Delete"
+                                   asp-route-id="@item.Id"
+                                   onsubmit="return confirm('Bu yeteneği silmek istediğinize emin misiniz?')"><button type="submit" class="btn btn-danger btn-sm">
+
+                                    <i class="fas fa-trash"></i>
+
+                                </button></form>
+
+                            </td>
+
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>

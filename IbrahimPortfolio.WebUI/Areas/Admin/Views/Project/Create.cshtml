@@ -1,0 +1,158 @@
+@using IbrahimPortfolio.Dto.ProjectDtos
+@model CreateProjectDto
+
+@{
+    ViewData["Title"] = "Yeni Proje";
+}
+
+<h1 class="mt-4">Yeni Proje</h1>
+
+<ol class="breadcrumb mb-4">
+
+    <li class="breadcrumb-item">
+        <a asp-area="Admin"
+           asp-controller="Project"
+           asp-action="Index">
+            Projeler
+        </a>
+    </li>
+
+    <li class="breadcrumb-item active">
+        Yeni Proje
+    </li>
+
+</ol>
+
+<div class="card mb-4">
+
+    <div class="card-header">
+        <i class="fas fa-plus me-1"></i>
+        Proje Ekle
+    </div>
+
+    <div class="card-body">
+
+        <form asp-area="Admin"
+              asp-controller="Project"
+              asp-action="Create"
+              method="post">
+
+            <div asp-validation-summary="All"
+                 class="alert alert-danger">
+            </div>
+
+            <div class="mb-3">
+
+                <label asp-for="Name"
+                       class="form-label">
+                    Proje Adı
+                </label>
+
+                <input asp-for="Name"
+                       class="form-control" />
+<span asp-validation-for="Name" class="text-danger"></span>
+
+            </div>
+
+            <div class="mb-3">
+
+                <label asp-for="Description"
+                       class="form-label">
+                    Açıklama
+                </label>
+
+                <textarea asp-for="Description"
+                          class="form-control"
+                          rows="5"></textarea>
+<span asp-validation-for="Description" class="text-danger"></span>
+
+            </div>
+
+            <div class="mb-3">
+
+                <label asp-for="Technologies"
+                       class="form-label">
+                    Teknolojiler
+                </label>
+
+                <input asp-for="Technologies"
+                       class="form-control"
+                       placeholder="Örn: ASP.NET Core, EF Core, SQL Server" />
+<span asp-validation-for="Technologies" class="text-danger"></span>
+
+            </div>
+
+            <div class="mb-3">
+
+                <label asp-for="ImageUrl"
+                       class="form-label">
+                    Görsel URL
+                </label>
+
+                <input asp-for="ImageUrl"
+                       class="form-control" />
+<span asp-validation-for="ImageUrl" class="text-danger"></span>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-6 mb-3">
+
+                    <label asp-for="GithubUrl"
+                           class="form-label">
+                        GitHub URL
+                    </label>
+
+                    <input asp-for="GithubUrl"
+                           class="form-control" />
+<span asp-validation-for="GithubUrl" class="text-danger"></span>
+
+                </div>
+
+                <div class="col-md-6 mb-3">
+
+                    <label asp-for="LiveUrl"
+                           class="form-label">
+                        Canlı Proje URL
+                    </label>
+
+                    <input asp-for="LiveUrl"
+                           class="form-control" />
+<span asp-validation-for="LiveUrl" class="text-danger"></span>
+
+                </div>
+
+            </div>
+
+            <hr />
+
+            <div class="d-flex justify-content-between">
+
+                <a asp-area="Admin"
+                   asp-controller="Project"
+                   asp-action="Index"
+                   class="btn btn-secondary">
+
+                    <i class="fas fa-arrow-left me-1"></i>
+                    Geri Dön
+                </a>
+
+                <button type="submit"
+                        class="btn btn-primary">
+
+                    <i class="fas fa-save me-1"></i>
+                    Kaydet
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+

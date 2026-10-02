@@ -1,0 +1,64 @@
+**/bin/
+**/obj/
+.vs/
+*.user
+*.suo
+*.Backup.tmp
+*.log
+.artifacts/
+secrets.json
+.env
+.env.*
+
+# Local configuration and credentials
+appsettings.Local.json
+appsettings.*.Local.json
+appsettings.Production.json
+appsettings.Staging.json
+*.pfx
+*.p12
+*.pem
+*.key
+*.snk
+*.publishsettings
+*.pubxml
+*.pubxml.user
+.aws/
+.codex/
+
+# IDE caches and temporary files
+.idea/
+.vscode/
+*.sln.docstates
+*.sln.ide
+*.cache
+*.tmp
+*.bak
+*~
+[Bb]ackup*/
+
+# Tests, coverage and generated output
+TestResults/
+coverage/
+coverage-report/
+*.coverage
+*.coveragexml
+coverage.cobertura.xml
+coverage.opencover.xml
+artifacts/
+publish/
+node_modules/
+
+# Local database artifacts
+*.mdf
+*.ldf
+*.ndf
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+
+# OS metadata
+.DS_Store
+Thumbs.db
