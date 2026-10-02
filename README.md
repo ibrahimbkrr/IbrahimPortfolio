@@ -41,10 +41,10 @@ Dashboard proje/yetenek/sertifika sayılarını, okunmamış mesaj sayısını v
 
 Gereksinimler: .NET 8 SDK, SQL Server/SQL Server Express ve EF Core 8 CLI aracı. Smoke testi için Windows ve PowerShell 7 kullanılır. Komutları solution kökünden çalıştırın.
 
-1. Repository'yi klonlayın. Aşağıdaki `GITHUB_KULLANICI_ADI` alanını repository sahibinin GitHub kullanıcı adıyla değiştirin.
+1. Repository'yi klonlayın.
 
 ```powershell
-git clone https://github.com/GITHUB_KULLANICI_ADI/IbrahimPortfolio.git
+git clone https://github.com/ibrahimbkrr/IbrahimPortfolio.git
 cd IbrahimPortfolio
 ```
 
