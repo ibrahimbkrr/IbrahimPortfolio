@@ -2,6 +2,10 @@
 
 ASP.NET Core MVC ve Web API kullanılarak geliştirilmiş, dinamik içerik yönetimi ve yönetim paneline sahip kişisel portfolio uygulaması. .NET 8 tabanlı katmanlı mimaride public site ve admin paneli aynı API üzerinden çalışır.
 
+**[Canlı Proje](https://ibrahimportfolio-web-h5a6gqezdxeud5h5.swedencentral-01.azurewebsites.net/)**
+
+WebUI ve WebApi, Azure App Service F1 üzerinde; veriler Azure SQL Database ücretsiz katmanında çalışır. GitHub Actions, `main` dalından OIDC ile iki uygulamayı ayrı ayrı yayımlar. Ücretsiz planda ilk açılış gecikebilir; SQL ücretsiz kotası dolduğunda veritabanı sonraki aya kadar duraklar.
+
 ## 📸 Ekran Görüntüleri
 
 ### 🌐 Portfolio
